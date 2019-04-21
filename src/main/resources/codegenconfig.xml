@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="gbk" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="codegen.xsd">
+
+	<properties>
+		<property name="company" value="suixingpay"/>
+		<property name="project" value="demo"/>
+		<property name="module" value="coffee"/>
+		<property name="developer" value="[wangzhen@zhongyi.com]"/>
+	</properties>
+
+
+	<database>
+		<dbHelperClass>com.example.mybatis.codegen.demo.db.impl.MySqlHelper</dbHelperClass>
+		<url>jdbc:mysql://localhost:3306/demo?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true&amp;serverTimezone=GMT%2B8</url>
+		<username>root</username>
+		<password>123456</password>
+	</database>
+
+	<table tableName="T_COFFEE">
+		<variable name="class" value="Coffee" />
+	</table>
+
+	<templates basepath="./src/main/resources/template">
+		<template id="po" path="po.ftl" />
+		<template id="domain" path="domain.ftl" />
+		<template id="mapper" path="mapper.ftl" />
+		<template id="mapper-xml" path="mapper-xml.ftl" />
+		<template id="service" path="service.ftl" />
+		<template id="serviceimpl" path="serviceimpl.ftl" />
+	</templates>
+
+	<files baseDir="../merc-core">
+		<file refTemplate="po" filename="{class}Po.java"
+			dir="src/main/com/{company}/{project}/core/orm/{module}/po" />
+		<file refTemplate="domain" filename="{class}.java"
+			dir="src/main/com/{company}/{project}/core/orm/{module}/domain" />
+		<file refTemplate="mapper" filename="{class}Mapper.java"
+			dir="src/main/com/{company}/{project}/core/orm/{module}/mapper" />
+		<file refTemplate="mapper-xml" filename="{class}Mapper.xml"
+			dir="src/main/resources/com/{company}/{project}/core/orm/{module}/mapper" />
+		<file refTemplate="service" filename="{class}Service.java"
+			dir="src/main/com/{company}/{project}/core/service/{module}" />
+		<file refTemplate="serviceimpl" filename="{class}ServiceImpl.java"
+			dir="src/main/com/{company}/{project}/core/service/impl/{module}" />
+	</files>
+
+</config>
